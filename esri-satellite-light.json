@@ -1,0 +1,44 @@
+{
+  "version": 8,
+  "name": "Esri Satellite + Light Roads",
+  "sources": {
+    "esri_sat": {
+      "type": "raster",
+      "tiles": [
+        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+      ],
+      "tileSize": 256
+    },
+    "carto_roads": {
+      "type": "vector",
+      "tiles": [
+        "https://basemaps.cartocdn.com/vector/tilelayers/{z}/{x}/{y}.mvt"
+      ],
+      "minzoom": 0,
+      "maxzoom": 14
+    }
+  },
+  "layers": [
+    {
+      "id": "satellite-base",
+      "type": "raster",
+      "source": "esri_sat"
+    },
+    {
+      "id": "roads-light",
+      "type": "line",
+      "source": "carto_roads",
+      "source-layer": "transportation",
+      "paint": {
+        "line-color": "#ffffff",
+        "line-width": [
+          "interpolate", ["linear"], ["zoom"],
+          5, 0.1,
+          10, 0.4,
+          14, 1.2
+        ],
+        "line-opacity": 0.7
+      }
+    }
+  ]
+}
