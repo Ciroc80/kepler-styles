@@ -1,6 +1,8 @@
 {
   "version": 8,
   "name": "Esri Satellite + Light Roads",
+  "sprite": "https://raw.githubusercontent.com/mapbox/mapbox-gl-styles/master/sprites/basic-v9",
+  "glyphs": "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf",
   "sources": {
     "esri_sat": {
       "type": "raster",
@@ -9,10 +11,10 @@
       ],
       "tileSize": 256
     },
-    "carto_roads": {
+    "roads": {
       "type": "vector",
       "tiles": [
-        "https://basemaps.cartocdn.com/vector/tilelayers/{z}/{x}/{y}.mvt"
+        "https://basemaps.cartocdn.com/tiles/v3/tiles/{z}/{x}/{y}.mvt"
       ],
       "minzoom": 0,
       "maxzoom": 14
@@ -20,14 +22,14 @@
   },
   "layers": [
     {
-      "id": "satellite-base",
+      "id": "satellite",
       "type": "raster",
       "source": "esri_sat"
     },
     {
       "id": "roads-light",
       "type": "line",
-      "source": "carto_roads",
+      "source": "roads",
       "source-layer": "transportation",
       "paint": {
         "line-color": "#ffffff",
